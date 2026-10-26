@@ -1,0 +1,10 @@
+{
+  "mcpServers": {
+    "bettergi-guide": {
+      "command": "node",
+      "args": [
+        "mcp-server.mjs"
+      ]
+    }
+  }
+}

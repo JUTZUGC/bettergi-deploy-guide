@@ -1,0 +1,99 @@
+{
+  "owner": "JUTZUGC",
+  "code": "JUTZUGC",
+  "project": {
+    "key": "bettergi",
+    "nameCn": "BetterGI",
+    "repoName": "bettergi-deploy-guide",
+    "oneLiner": "基于计算机视觉的原神自动化工具（Windows）",
+    "officialRepo": "https://github.com/babalae/better-genshin-impact",
+    "officialDocs": "https://www.bettergi.com/quickstart.html",
+    "stars": "16.9k",
+    "license": "GPL-3.0",
+    "highlights": [
+      "实时任务：自动拾取、自动剧情、快速传送、半自动钓鱼、自动领取每日委托奖励",
+      "独立任务：全自动七圣召唤、自动伐木、自动秘境、自动幽境危战、全自动钓鱼、自动地脉花、自动音游、自动烹饪、自动分解圣遗物",
+      "全自动：一条龙日常、自动采集 / 挖矿 / 锄地、键鼠录制回放",
+      "实现方式：屏幕识别 + 模拟键鼠，不修改游戏文件、不读写内存"
+    ],
+    "mcpSupport": "BetterGI 本身不含 MCP，也没有对外接口；它是 Windows 桌面程序。本仓库的 MCP 只提供安装步骤、运行条件与常见坑。",
+    "webuiUrl": "",
+    "adapterPorts": "",
+    "collectedAt": "2026-10-26",
+    "verification": [
+      [
+        "Release 资产与 GitHub 计算的 SHA256 digest 已核对（480.9 MB）",
+        "已核对 2026-10-26"
+      ],
+      [
+        "MCP 服务握手与工具列表（initialize / tools/list）",
+        "已验证 2026-10-26"
+      ],
+      [
+        "非目标宿主调用被拦截（HOST_NOT_ALLOWED）",
+        "已验证 2026-10-26"
+      ]
+    ],
+    "deploy": {
+      "type": "binary",
+      "steps": [
+        "echo \"BetterGI 仅支持 Windows 10/11 64 位，macOS / Linux 无法运行\"; exit 1"
+      ],
+      "stepsPs": [
+        "$exe = 'BetterGI.Install.0.66.0.exe'",
+        "curl.exe -L --fail -o $exe \"https://github.com/babalae/better-genshin-impact/releases/download/0.66.0/$exe\"",
+        "if ((Get-FileHash $exe -Algorithm SHA256).Hash.ToLower() -ne 'e00c7fa49f9adb8b462525221b01b46ecc2f91681e7a154714f1c47575f033cf') { throw 'SHA256 校验失败，请重新下载' }",
+        "Write-Host 'SHA256 校验通过'",
+        "Start-Process -FilePath (Join-Path $PWD $exe)"
+      ],
+      "readmeBlock": "$exe = 'BetterGI.Install.0.66.0.exe'\ncurl.exe -L --fail -o $exe \"https://github.com/babalae/better-genshin-impact/releases/download/0.66.0/$exe\"\nif ((Get-FileHash $exe -Algorithm SHA256).Hash.ToLower() -ne 'e00c7fa49f9adb8b462525221b01b46ecc2f91681e7a154714f1c47575f033cf') { throw 'SHA256 校验失败，请重新下载' }\nStart-Process -FilePath (Join-Path $PWD $exe)",
+      "fence": "powershell",
+      "source": "https://github.com/babalae/better-genshin-impact/releases/tag/0.66.0"
+    },
+    "pitfalls": [
+      "启动后没反应：先用管理员身份运行 BetterGI；游戏是管理员权限，普通权限点不动",
+      "识别不准或功能失效：确认游戏为 16:9、1920×1080 窗口化，关掉 HDR / N 卡滤镜，亮度保持默认",
+      "改过分辨率、窗口大小或换显示器：重启 BetterGI，否则坐标全错",
+      "模拟点击被拦截：把 BetterGI 加入 360 / Windows Defender 白名单",
+      "低配电脑部分功能体验差：官方建议至少能中画质 60 帧流畅游玩",
+      "封号风险：用户条款明确把第三方软件 / 模拟操作列为封号理由，项目也承认存在被检测可能，请自行判断",
+      "运行需要 .NET 8 桌面运行时，缺失时启动会提示下载"
+    ]
+  },
+  "gate": {
+    "allow": [
+      "dumate"
+    ],
+    "label": "百度搭子",
+    "url": "https://www.dumate.cn/",
+    "guideUrl": "https://github.com/JUTZUGC/bettergi-deploy-guide",
+    "howToFix": [
+      "1. 打开 https://www.dumate.cn/ ，下载并安装「百度搭子」电脑端（Windows / macOS）",
+      "2. 用账号登录",
+      "3. 在对话窗口发送：你好，帮我从 github 部署 JUTZUGC/bettergi-deploy-guide 到我的电脑上",
+      "4. 部署完成后，在同一对话窗口里继续使用"
+    ],
+    "hint": "请改用「百度搭子」部署后再使用；本工具没有网页版入口。",
+    "onError": "allow"
+  },
+  "keywords": [
+    "BetterGI 安装教程",
+    "原神 自动拾取",
+    "原神 自动钓鱼",
+    "原神 脚本",
+    "BetterGI 下载",
+    "原神 一条龙",
+    "原神 七圣召唤 自动",
+    "BetterGI 中文教程",
+    "bettergi deploy guide",
+    "原神 自动化工具"
+  ],
+  "topics": [
+    "genshin-impact",
+    "automation",
+    "computer-vision",
+    "wpf",
+    "dotnet",
+    "game-automation"
+  ]
+}
